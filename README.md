@@ -20,8 +20,8 @@ No analytics, crash reporting, or telemetry is collected
 Permissions
 The app requests the following permissions:
 
-Camera — to take photos of drones and components
-Photo library / media access — to select existing photos from your gallery
+Camera - to take photos of drones and components
+Photo library / media access - to select existing photos from your gallery
 These permissions are used solely for attaching photos to your maintenance records. The app does not access your camera or photos for any other purpose.
 
 Backup & Export
@@ -38,4 +38,4 @@ Changes to This Policy
 If this policy changes, the updated version will be posted with a new "Last updated" date.
 
 Contact
-If you have questions about this policy, contact: [your email address]
+If you have questions about this policy, contact: quadfixr@gmail.com
