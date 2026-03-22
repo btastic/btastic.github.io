@@ -3,33 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>QuadFixr - Contact & Support</title>
+  <title>quadfixr – Contact & Support</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0a0a0f;
-      --surface: #12121a;
-      --border: #1e1e2e;
-      --accent: #31b7e9;
-      --accent-dim: rgba(49, 183, 233, 0.12);
-      --text: #e8e8f0;
-      --muted: #6b6b80;
-      --white: #ffffff;
-      --heading: #ffffff;
-    }
-
-    @media (prefers-color-scheme: light) {
-      :root {
-        --bg: #f4f7fa;
-        --surface: #ffffff;
-        --border: #dde3ec;
-        --accent: #1a9cc9;
-        --accent-dim: rgba(49, 183, 233, 0.1);
-        --text: #3a3a4a;
-        --muted: #8a8aa0;
-        --white: #0a0a0f;
-        --heading: #0a0a0f;
-      }
+      --bg: #ffffff;
+      --surface: #f4f7fa;
+      --border: #dde3ec;
+      --accent: #1a9cc9;
+      --accent-dim: rgba(49, 183, 233, 0.1);
+      --text: #3a3a4a;
+      --muted: #8a8aa0;
+      --heading: #0a0a0f;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -47,14 +32,13 @@
       overflow-x: hidden;
     }
 
-    /* Background grid */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
       background-image:
-        linear-gradient(rgba(49,183,233,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(49,183,233,0.03) 1px, transparent 1px);
+        linear-gradient(rgba(49,183,233,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(49,183,233,0.06) 1px, transparent 1px);
       background-size: 40px 40px;
       pointer-events: none;
       z-index: 0;
@@ -67,11 +51,19 @@
       max-width: 480px;
     }
 
-    /* Header */
-    .header {
-      margin-bottom: 3rem;
+    .logo {
+      display: block;
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto 2.5rem;
       opacity: 0;
       animation: fadeUp 0.6s ease forwards;
+    }
+
+    .header {
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.1s forwards;
     }
 
     .tag {
@@ -96,9 +88,7 @@
       letter-spacing: -0.02em;
     }
 
-    h1 span {
-      color: var(--accent);
-    }
+    h1 span { color: var(--accent); }
 
     .subtitle {
       margin-top: 0.75rem;
@@ -107,7 +97,6 @@
       line-height: 1.6;
     }
 
-    /* Cards */
     .cards {
       display: flex;
       flex-direction: column;
@@ -129,9 +118,9 @@
       animation: fadeUp 0.6s ease forwards;
     }
 
-    .card:nth-child(1) { animation-delay: 0.15s; }
-    .card:nth-child(2) { animation-delay: 0.25s; }
-    .card:nth-child(3) { animation-delay: 0.35s; }
+    .card:nth-child(1) { animation-delay: 0.2s; }
+    .card:nth-child(2) { animation-delay: 0.3s; }
+    .card:nth-child(3) { animation-delay: 0.4s; }
 
     .card:hover {
       border-color: var(--accent);
@@ -152,10 +141,7 @@
       font-size: 1.1rem;
     }
 
-    .card-content {
-      flex: 1;
-      min-width: 0;
-    }
+    .card-content { flex: 1; min-width: 0; }
 
     .card-label {
       font-size: 0.65rem;
@@ -186,19 +172,16 @@
       transform: translateX(3px);
     }
 
-    /* Footer */
     .footer {
       margin-top: 2.5rem;
       text-align: center;
       font-size: 0.7rem;
       color: var(--muted);
       opacity: 0;
-      animation: fadeUp 0.6s ease 0.5s forwards;
+      animation: fadeUp 0.6s ease 0.55s forwards;
     }
 
-    .footer span {
-      color: var(--accent);
-    }
+    .footer span { color: var(--accent); }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
@@ -213,19 +196,21 @@
 <body>
   <div class="container">
 
+    <img src="logo.png" alt="quadfixr logo" class="logo" />
+
     <div class="header">
       <div class="tag">Support</div>
       <h1><span>Support</span></h1>
-      <p class="subtitle">Questions, feedback, or bug reports - happy to help.</p>
+      <p class="subtitle">Questions, feedback, or bug reports - happy to help</p>
     </div>
 
     <div class="cards">
 
-      <a href="mailto:quadfixr@gmail.com" class="card">
+      <a id="email-card" href="#" class="card">
         <div class="card-icon">✉️</div>
         <div class="card-content">
           <div class="card-label">Email</div>
-          <div class="card-value">quadfixr@gmail.com</div>
+          <div class="card-value" id="email-value"></div>
         </div>
         <div class="card-arrow">→</div>
       </a>
@@ -247,8 +232,16 @@
         </div>
         <div class="card-arrow">→</div>
       </a>
-
     </div>
   </div>
+
+  <script>
+    const user = 'quadfixr';
+    const domain = 'gmail.com';
+    const email = user + '@' + domain;
+    const card = document.getElementById('email-card');
+    card.href = 'mailto:' + email;
+    document.getElementById('email-value').textContent = email;
+  </script>
 </body>
 </html>
