@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuadFixr - Contact & Support</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --border: #1e1e2e;
+      --accent: #31b7e9;
+      --accent-dim: rgba(49, 183, 233, 0.12);
+      --text: #e8e8f0;
+      --muted: #6b6b80;
+      --white: #ffffff;
+      --heading: #ffffff;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f4f7fa;
+        --surface: #ffffff;
+        --border: #dde3ec;
+        --accent: #1a9cc9;
+        --accent-dim: rgba(49, 183, 233, 0.1);
+        --text: #3a3a4a;
+        --muted: #8a8aa0;
+        --white: #0a0a0f;
+        --heading: #0a0a0f;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      overflow-x: hidden;
+    }
+
+    /* Background grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(49,183,233,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(49,183,233,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    /* Header */
+    .header {
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid rgba(49,183,233,0.25);
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2.2rem, 6vw, 3rem);
+      font-weight: 800;
+      line-height: 1.05;
+      color: var(--heading);
+      letter-spacing: -0.02em;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .subtitle {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Cards */
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .card {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.15s; }
+    .card:nth-child(2) { animation-delay: 0.25s; }
+    .card:nth-child(3) { animation-delay: 0.35s; }
+
+    .card:hover {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+      transform: translateX(4px);
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(49,183,233,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+
+    .card-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .card-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .card-value {
+      font-size: 0.85rem;
+      color: var(--heading);
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-arrow {
+      color: var(--muted);
+      font-size: 0.9rem;
+      transition: color 0.2s, transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .card:hover .card-arrow {
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 2.5rem;
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--muted);
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.5s forwards;
+    }
+
+    .footer span {
+      color: var(--accent);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 400px) {
+      .card-value { font-size: 0.78rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="header">
+      <div class="tag">Support</div>
+      <h1><span>Support</span></h1>
+      <p class="subtitle">Questions, feedback, or bug reports - happy to help.</p>
+    </div>
+
+    <div class="cards">
+
+      <a href="mailto:quadfixr@gmail.com" class="card">
+        <div class="card-icon">✉️</div>
+        <div class="card-content">
+          <div class="card-label">Email</div>
+          <div class="card-value">quadfixr@gmail.com</div>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
+      <a href="https://discord.gg/CjAzKTZ8ku" target="_blank" rel="noopener" class="card">
+        <div class="card-icon">💬</div>
+        <div class="card-content">
+          <div class="card-label">Discord Community</div>
+          <div class="card-value">discord.gg/CjAzKTZ8ku</div>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
+      <a href="https://instagram.com/quadfixrapp" target="_blank" rel="noopener" class="card">
+        <div class="card-icon">📸</div>
+        <div class="card-content">
+          <div class="card-label">Instagram</div>
+          <div class="card-value">@quadfixrapp</div>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+
+    </div>
+  </div>
+</body>
+</html>
