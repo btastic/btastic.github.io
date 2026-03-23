@@ -183,6 +183,39 @@
 
     .footer span { color: var(--accent); }
 
+    .page-nav {
+      margin-top: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.55s forwards;
+    }
+
+    .page-nav-link {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .page-nav-link:hover {
+      color: var(--accent);
+    }
+
+    .page-nav-link.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .page-nav-sep {
+      font-size: 0.68rem;
+      color: var(--border);
+    }
+
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -233,6 +266,15 @@
         <div class="card-arrow">→</div>
       </a>
     </div>
+
+    <nav class="page-nav">
+      <a href="quadfixr-contact.html" class="page-nav-link active">Contact</a>
+      <span class="page-nav-sep">·</span>
+      <a href="quadfixr-tos.html" class="page-nav-link">Terms</a>
+      <span class="page-nav-sep">·</span>
+      <a href="quadfixr-privacy.html" class="page-nav-link">Privacy</a>
+    </nav>
+
   </div>
 
   <script>
